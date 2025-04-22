@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "authorName": {
+      "type": "string",
+      "required": true
+    },
+    "commentStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "post": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::post.post",
+      "inversedBy": "comments"
+    },
+    "authorEmail": {
+      "type": "email",
+      "required": true
+    }
+  }
+}

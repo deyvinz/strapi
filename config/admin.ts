@@ -1,4 +1,9 @@
-export default ({ env }) => ({
+interface EnvConfig {
+  (key: string): string | undefined;
+  bool(key: string, defaultValue?: boolean): boolean;
+}
+
+export default ({ env }: { env: EnvConfig }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
